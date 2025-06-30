@@ -1,0 +1,21 @@
+<div class="container" *ngIf="currentQuestionIndex < questions.length">
+  <h2>Pregunta {{ currentQuestionIndex + 1 }} de {{ questions.length }}</h2>
+  <p style="text-align: center;">{{ questions[currentQuestionIndex].question }}</p>
+
+  <ul>
+    <li *ngFor="let option of questions[currentQuestionIndex].options">
+      <div style="text-align: center;">
+        <button (click)="answer(option)">{{ option }}</button>
+      </div>
+    </li>
+  </ul>
+
+  <div class="feedback" *ngIf="feedback">{{ feedback }}</div>
+</div>
+
+<div class="container" *ngIf="currentQuestionIndex >= questions.length">
+  <h2>Has finalizado el cuestionario.</h2>
+  <div style="text-align: center;">
+    <button routerLink="/result">Ver resultados</button>
+  </div>
+</div>
